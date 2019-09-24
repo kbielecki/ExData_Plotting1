@@ -14,7 +14,7 @@ df2<-filter(df2,day>=dmy("01/02/2007"),day<dmy("03/02/2007"))
 rm(df1)
 
 # Check and leave only rows with non ? values
-# fortunatly no rows with ? within observaton period
+# fortunately no rows with ? within observation period
 df2<-filter_at(df2,vars(matches("Global|Voltage|Sub")),any_vars(. != "?" ))
 
 # Convert data type to numeric of columns containing numbers
@@ -23,5 +23,6 @@ df2<-mutate_at(df2,vars(matches("Global|Voltage|Sub")),as.numeric)
 # Plot histogram with necessary layout parameters
 with(df2,hist(Global_active_power,col = "red",main = "Global Active Power",xlab = "Global Active Power (kilowates)"))
 
+# Save to PNG file
 dev.copy(png,file="plot1.png")
 dev.off()
