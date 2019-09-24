@@ -22,3 +22,6 @@ df2<-mutate_at(df2,vars(matches("Global|Voltage|Sub")),as.numeric)
 
 # Plot histogram with necessary layout parameters
 with(df2,hist(Global_active_power,col = "red",main = "Global Active Power",xlab = "Global Active Power (kilowates)"))
+
+dev.copy(png,file="plot1.png")
+dev.off()
